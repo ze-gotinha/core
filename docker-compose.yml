@@ -1,0 +1,85 @@
+version: '2'
+
+services:
+  # ============================= Rocketchat ==================================
+  rocketchat:
+    image: rocket.chat:0.69.2
+    restart: unless-stopped
+    environment:
+      - PORT=3000
+      - ROOT_URL=http://localhost:3000
+      - MONGO_URL=mongodb://mongo:27017/rocketchat
+      - ADMIN_USERNAME=admin
+      - ADMIN_PASS=admin
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:3.2
+    restart: unless-stopped
+    volumes:
+      - ./data/db:/data/db
+    command: mongod --smallfiles --oplogSize 128
+
+  # ================================= Bot =====================================
+  bot:
+    image: bot
+    build:
+      context: .
+      dockerfile: ./docker/bot.Dockerfile
+    restart: unless-stopped
+    command: make run-rocketchat 
+    env_file:
+      - docker/bot.env
+    ports:
+      - 5002:5002
+    depends_on:
+      - actions
+    volumes:
+      - ./bot:/bot
+      - ./scripts:/scripts
+    command: sh -c "make run-rocketchat"
+
+  actions:
+    build:
+      context: .
+      dockerfile: ./docker/actions.Dockerfile
+    ports:
+      - 5055:5055
+    volumes:
+      - ./bot/actions:/bot/actions
+      - ./bot/Makefile:/bot/Makefile
+    command: sh -c "make run-actions"
+
+  # ============================ Telegram Bot =================================
+  telegram_bot:
+      build:
+        context: .
+        dockerfile: ./docker/bot.Dockerfile
+      environment:
+        - TELEGRAM_BOT_USERNAME=lappisbot
+        - TELEGRAM_TOKEN=token
+        - TELEGRAM_WEBHOOK=your_webhook_server/webhooks/telegram/webhook
+      ports:
+        - 5001:5001
+      depends_on:
+        - actions
+      volumes:
+        - ./bot:/bot
+        - ./scripts:/scripts
+      command: sh -c "make run-telegram"
+
+  # =============================== Notebooks =================================
+  notebooks:
+    build:
+      context: .
+      dockerfile: ./docker/notebooks.Dockerfile
+    env_file:
+      - docker/notebooks.env
+    volumes:
+      - ./bot:/work/bot
+      - ./notebooks:/work/notebooks
+    ports:
+      - 8888:8888
