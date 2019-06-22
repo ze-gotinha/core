@@ -10,6 +10,9 @@ intents:
   - me
   - filhos
   - vacinas_atrasadas
+  - apresentacao
+  - vacinas_atrasadas
+  - qual_idade
   - resposta_nome_vacina
   - start
 
@@ -75,19 +78,19 @@ templates:
   utter_como_estou:
     - text: |
         Eu não tenho um corpo físico
-        
+
         Sou feito da mais bela e pura lógica algoritimica.
 
     - text: |
         Eu posso ser como você quiser
-        
+
         Basta me desenhar
 
         Mas capricha, hein!? ;)
 
     - text: |
         Sou duro e frio por fora
-        
+
         Mas tenho um coração quentinho
 
   utter_de_onde_voce_eh:
@@ -120,6 +123,10 @@ templates:
 
         Qual o nome da vacina mesmo?
 
+  utter_qual_idade:
+    - text: |
+        Então... Para isso eu preciso saber umas coisinhas... Qual sua idade?
+
 actions:
   - utter_default
   - utter_cumprimentar
@@ -134,3 +141,5 @@ actions:
   - utter_apresentacao
   - utter_qual_vacina_atrasada
   - action_vacina_atrasada
+  - utter_qual_idade
+  - action_get_idade

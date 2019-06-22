@@ -47,3 +47,9 @@
     - utter_qual_vacina_atrasada
 * resposta_nome_vacina
     - action_vacina_atrasada
+
+## path qual_idade
+* vacinas_a_tomar
+    - utter_qual_idade
+* qual_idade
+    - action_get_idade

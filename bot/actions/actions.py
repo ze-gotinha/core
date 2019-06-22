@@ -2,6 +2,7 @@ from rasa_core_sdk import Action
 from rasa_core_sdk.events import SlotSet
 import requests
 import random
+import re
 
 class ActionTest(Action):
    def name(self):
@@ -22,7 +23,7 @@ class ActionVacinaAtrasada(Action):
       }
 
     def name(self):
-      return "action_vacina_atrasada"
+        return "action_vacina_atrasada"
 
     def run(self, dispatcher, tracker, domain):
       try:
@@ -30,7 +31,7 @@ class ActionVacinaAtrasada(Action):
 
         if not vacina_informada is None:
           vacina_informada = vacina_informada.lower()
-        
+
         d = {
           'febre': 'febre_amarela',
           'amarela': 'febre_amarela',
@@ -38,7 +39,7 @@ class ActionVacinaAtrasada(Action):
           'gripe': 'influenza'
         }
 
-        if vacina_informada in d: 
+        if vacina_informada in d:
           is_valid_option = True
           my_option = d[vacina_informada]
         elif vacina_informada in self.vacinas:
@@ -53,6 +54,33 @@ class ActionVacinaAtrasada(Action):
       except:
         dispatcher.utter_message('Não conheço essa vacina. Recomendo entrar no site do Ministério da Saúde para mais informações: http://www.saude.gov.br/saude-de-a-z/vacinacao/vacine-se')
       return []
-        
 
 
+class ActionGetAge(Action):
+    def __init__(self):
+        self.intervals = {
+            '4 anos': ('Nesta idade, deve-se tomar o segundo reforço das vacinas Penta/DTP e '
+                'VIP/VOP, além de uma dose das vacinas de varíola e de influenza.'),
+            '5 anos': ('Nesta idade, dependendo da dose anterior, é necessário tomar uma'
+                ' dose da vacina Pneumocócica 23V.'),
+            '4 meses': ('Nesta idade, deve-se tomar a segunda dose das vacinas Penta/DTP, VIP/VOP,'
+                        ' Pneumocócica 10V e RotaVirus.'),
+            '5 meses': ('Nesta idade, deve-se tomar a segunda dose da Meningocócica C.'),
+        }
+
+    def name(self):
+      	return "action_get_idade"
+
+    def run(self, dispatcher, tracker, domain):
+        sender_message = tracker.current_state()['latest_message']['text']
+
+        age = re.search(r'\d+', sender_message).group()
+        type = sender_message.find('mes')
+
+        if type == -1:
+            type = age + ' anos'
+        else:
+            type = age + ' meses'
+
+        message = self.intervals[type]
+        dispatcher.utter_message(message)
