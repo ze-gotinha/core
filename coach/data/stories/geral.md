@@ -45,3 +45,9 @@
 ## path vacinas atrasadas
 * vacinas_atrasadas
     - utter_qual_vacina_atrasada
+
+## path qual_idade
+* vacinas_a_tomar
+    - utter_qual_idade
+* qual_idade
+    - action_get_idade
