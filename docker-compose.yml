@@ -59,9 +59,9 @@ services:
         context: .
         dockerfile: ./docker/bot.Dockerfile
       environment:
-        - TELEGRAM_BOT_USERNAME=lappisbot
-        - TELEGRAM_TOKEN=token
-        - TELEGRAM_WEBHOOK=your_webhook_server/webhooks/telegram/webhook
+        - TELEGRAM_BOT_USERNAME=ze_gotinha_bot
+        - TELEGRAM_TOKEN=870626277:AAH91B6bHIa55FQlUCHVCzGaVbeMyHtvXbs
+        - TELEGRAM_WEBHOOK=https://864c9cea.ngrok.io/webhooks/telegram/webhook
       ports:
         - 5001:5001
       depends_on:

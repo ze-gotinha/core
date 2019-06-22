@@ -13,3 +13,17 @@ class ActionTest(Action):
         except ValueError:
           dispatcher.utter_message(ValueError)
 
+class ActionVacinaAtrasada(Action):
+    def __init__(self):
+      self.vacinas = {
+        'febre_amarela': '',
+      }
+
+    def name(self):
+      return "action_vacina_atrasada"
+
+    def run(self, dispatcher, tracker, domain):
+      pass
+        
+
+

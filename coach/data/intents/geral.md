@@ -96,3 +96,17 @@
 - Tudo bem e você
 - como vc esta
 - como vai
+
+## intent:apresentacao
+- /start
+
+## intent:vacinas_atrasadas
+- vacina atrasada
+- preciso tomar vacina
+- faltando vacinas
+
+## intent:resposta_nome_vacina
+- Eu preciso tomar vacina [bcg](vacina)
+- Acho que preciso tomar [febre amarela](vacina)
+- Quero tomar a vacina da [gripe](vacina)
+- Se não me engano, preciso da [influenza](vacina)
