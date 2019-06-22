@@ -86,7 +86,7 @@ class ActionGetAge(Action):
         else:
             type = age + ' meses'
 
-        message_header = f"Caso sua cartela esteja em dia, com {type} deve-se tomar "
+        message_header = f"Caso a cartela esteja em dia, com {type} deve-se tomar "
 
         message = self.intervals[type]
         dispatcher.utter_message(message_header + message + '\n' + message_tail)
