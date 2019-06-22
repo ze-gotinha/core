@@ -11,11 +11,11 @@ intents:
   - filhos
   - vacinas_atrasadas
   - apresentacao
-  - vacinas_atrasadas
   - qual_idade
   - resposta_nome_vacina
   - start
   - achar_ubs
+  - vacinas_a_tomar
 
 entities:
   - idade
@@ -126,7 +126,7 @@ templates:
 
   utter_qual_idade:
     - text: |
-        Então... Para isso eu preciso saber umas coisinhas... Qual sua idade?
+        Então... Para isso eu preciso saber umas coisinhas... Qual a idade?
 
   utter_ubs_mais_proxima:
     - text: |

@@ -59,21 +59,25 @@ class ActionVacinaAtrasada(Action):
 class ActionGetAge(Action):
     def __init__(self):
         self.intervals = {
-            '4 anos': ('Nesta idade, deve-se tomar o segundo reforço das vacinas Penta/DTP e '
-                'VIP/VOP, além de uma dose das vacinas de varíola e de influenza.'),
-            '5 anos': ('Nesta idade, dependendo da dose anterior, é necessário tomar uma'
-                ' dose da vacina Pneumocócica 23V.'),
-            '4 meses': ('Nesta idade, deve-se tomar a segunda dose das vacinas Penta/DTP, VIP/VOP,'
-                        ' Pneumocócica 10V e RotaVirus.'),
-            '5 meses': ('Nesta idade, deve-se tomar a segunda dose da Meningocócica C.'),
+            "2 meses": "a primeira dose das vacinas Penta/DTP, VIP/VOP, Pneumocócica 10V, Rotavírus.",
+            "3 meses": "a primeira dose da vacina Meningocócica C.",
+            "4 meses": "a segunda dose das vacinas Penta/DTP, VIP/VOP, Pneumocócica 10V, Rotavírus.",
+            "5 meses": "a segunda dose da vacina Meningocócica C.",
+            "6 meses": "a terceira dose das vacinas Penta/DTP, VIP/VOP.",
+            "9 meses": "uma dose única da febre amarela.",
+            "12 meses": "um reforço das vacinas Pneumocócica 10V, Meningocócica C e a primeira dose da triplice viral.",
+            "15 meses": "o primeiro reforço das vacinas Penta/DTP, VIP/VOP, e as primeiras doses da Hepatite A e Tetra viral.",
+            "4 anos": "o segundo reforço das vacinas Penta/DTP, VIP/VOP e a primeira dose da Varicela.",
+            "5 anos": "uma dose da vacina Pneumocócica 23V.",
         }
 
     def name(self):
       	return "action_get_idade"
 
     def run(self, dispatcher, tracker, domain):
+        link = "http://portalarquivos2.saude.gov.br/images/jpg/2019/marco/22/Calendario-de-Vacinacao-2019-Atualizado-Site-22-03-19.jpg"
+        message_tail = "Caso contrário, você pode encontrar a tabela completa de vacinações em: " + link
         sender_message = tracker.current_state()['latest_message']['text']
-
         age = re.search(r'\d+', sender_message).group()
         type = sender_message.find('mes')
 
@@ -82,5 +86,7 @@ class ActionGetAge(Action):
         else:
             type = age + ' meses'
 
+        message_header = f"Caso sua cartela esteja em dia, com {type} deve-se tomar "
+
         message = self.intervals[type]
-        dispatcher.utter_message(message)
+        dispatcher.utter_message(message_header + message + '\n' + message_tail)
