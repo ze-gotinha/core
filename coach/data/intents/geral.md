@@ -97,16 +97,37 @@
 - como vc esta
 - como vai
 
-## intent:apresentacao
+## intent:start
 - /start
 
 ## intent:vacinas_atrasadas
-- vacina atrasada
-- preciso tomar vacina
-- faltando vacinas
+- estou com vacinas atrasadas
+- acho que preciso tomar uma vacina
+- estou com alguma vacina em atraso
+- vacinas atrasadas
+- atrasada
+- estou em atraso
+- há um atraso na vacina
+- atrasado
+- está com vacina atrasada
 
 ## intent:resposta_nome_vacina
-- Eu preciso tomar vacina [bcg](vacina)
-- Acho que preciso tomar [febre amarela](vacina)
+- Eu preciso tomar vacina [bcG](vacina)
+- Acho que preciso tomar [influenza](vacina)
 - Quero tomar a vacina da [gripe](vacina)
 - Se não me engano, preciso da [influenza](vacina)
+- Eu preciso tomar vacina para [Bcg](vacina)
+- Acho que a [BCG](vacina) está pendente
+- [febre amarela](vacina)
+- [bCg](vacina)
+- [gripe](vacina)
+- [Influenza](vacina)
+- necessito tomat a [gripe](vacina)
+- gostaria de tomar a [gripe](vacina)
+- é preciso tomar a vacina [gripe](vacina)
+- a [Gripe](vacina) esta atrasada
+- estou precisando da [bcg](vacina)
+- está me faltando a [febre amarela](vacina)
+- minha cartão de vacinação não tem a [Febre Amarela](vacina)
+- a caderneta de saude está faltando a [Febre amarela](vacina)
+- falta a [febre amarela](vacina)

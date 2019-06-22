@@ -10,3 +10,10 @@ train:
 
 console:
 	docker-compose run telegram_bot make run-console
+
+train-and-up:
+	make train
+	docker-compose up
+
+restart-actions:
+	docker restart core_actions_1
