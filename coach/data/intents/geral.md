@@ -121,6 +121,8 @@
 - Eu preciso tomar vacina para [Bcg](vacina)
 - Acho que a [BCG](vacina) está pendente
 - [febre amarela](vacina)
+- [febre](vacina)
+- [Febre](vacina)
 - [bCg](vacina)
 - [gripe](vacina)
 - [Influenza](vacina)
@@ -133,3 +135,21 @@
 - minha cartão de vacinação não tem a [Febre Amarela](vacina)
 - a caderneta de saude está faltando a [Febre amarela](vacina)
 - falta a [febre amarela](vacina)
+
+## intent:achar_ubs
+- Onde eu consigo me vacinar?
+- Onde tem vacina para [gripe](vacina)
+- Onde fica a UBS mais próxima
+- ubs
+- Ubs
+- Unidade basica de saude
+- unidade basica de saude
+- Como faço para me vacinar
+- Aonde posso vacinar
+- Aonde encontro vacinas
+- Onde posso tomar
+- Posto de atendimento
+- posto de atendimento
+- posto mais próximo
+- como chego na ubs
+- qual a ubs mais próxima

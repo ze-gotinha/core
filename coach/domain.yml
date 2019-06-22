@@ -15,6 +15,7 @@ intents:
   - qual_idade
   - resposta_nome_vacina
   - start
+  - achar_ubs
 
 entities:
   - idade
@@ -41,7 +42,7 @@ templates:
 
   utter_elogios:
     - text: |
-          Obrigada! É sempre bom dar e receber elogios :P
+          Obrigado! É sempre bom dar e receber elogios :P
 
   utter_apresentacao:
     - text: |
@@ -73,7 +74,7 @@ templates:
 
   utter_tudo_bem:
     - text: |
-          Tudo bem, obrigada! Em que posso te ajudar?
+          Tudo bem, obrigado! Em que posso te ajudar?
 
   utter_como_estou:
     - text: |
@@ -127,6 +128,17 @@ templates:
     - text: |
         Então... Para isso eu preciso saber umas coisinhas... Qual sua idade?
 
+  utter_ubs_mais_proxima:
+    - text: |
+        Para encontrar a Unidade Básica de Saúde mais próxima, só entrar nesse link
+        
+        https://bit.ly/2ZCXTW6
+
+    - text: |
+        Encontrei algumas Unidades Básicas de Saúde aqui perto, só clicar no link
+
+        https://bit.ly/2ZCXTW6
+
 actions:
   - utter_default
   - utter_cumprimentar
@@ -143,3 +155,4 @@ actions:
   - action_vacina_atrasada
   - utter_qual_idade
   - action_get_idade
+  - utter_ubs_mais_proxima
