@@ -13,10 +13,12 @@ intents:
   - apresentacao
   - vacinas_atrasadas
   - qual_idade
+  - resposta_nome_vacina
+  - start
 
 entities:
   - idade
-  - vacinas
+  - vacina
 
 templates:
   utter_default:
@@ -138,5 +140,6 @@ actions:
   - utter_filhos
   - utter_apresentacao
   - utter_qual_vacina_atrasada
+  - action_vacina_atrasada
   - utter_qual_idade
   - action_get_idade
