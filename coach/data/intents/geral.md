@@ -22,6 +22,8 @@
 - obrigada
 - obrigado
 - obj
+- Ah, tudo bem
+- Beleza
 
 ## intent:cumprimentar
 - oi, tudo bem

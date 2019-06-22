@@ -47,10 +47,11 @@ class ActionVacinaAtrasada(Action):
 
         if is_valid_option:
             dispatcher.utter_message(self.vacinas[my_option.lower()])
+            dispatcher.utter_message('Se precisar de mais informações, entra nesse site aqui: http://www.saude.gov.br/saude-de-a-z/vacinacao/vacine-se')
         else:
-          dispatcher.utter_message('Não conheço essa vacina. Recomendo entrar no site do Ministério da Saúde para mais informações')
+          dispatcher.utter_message('Não conheço essa vacina. Recomendo entrar no site do Ministério da Saúde para mais informações: http://www.saude.gov.br/saude-de-a-z/vacinacao/vacine-se')
       except:
-        dispatcher.utter_message('Não conheço essa vacina. Recomendo entrar no site do Ministério da Saúde para mais informações')
+        dispatcher.utter_message('Não conheço essa vacina. Recomendo entrar no site do Ministério da Saúde para mais informações: http://www.saude.gov.br/saude-de-a-z/vacinacao/vacine-se')
       return []
         
 
